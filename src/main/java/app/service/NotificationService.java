@@ -4,6 +4,7 @@ import app.model.Notification;
 import app.model.NotificationStatus;
 import app.repository.NotificationRepository;
 import app.web.dto.NotificationRequest;
+import app.web.dto.NotificationResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
@@ -52,5 +53,10 @@ public class NotificationService {
         }
 
         return notificationRepository.save(notification);
+    }
+
+
+    public NotificationResponse getNotificationByUser(UUID userId) {
+        return notificationRepository.findByUserId(userId);
     }
 }
